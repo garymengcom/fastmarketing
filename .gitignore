@@ -1,0 +1,9 @@
+.idea/
+*.pyc
+__pycache__/
+.DS_Store
+venv
+.venv
+.env
+fastagent.secrets.yaml
+*.iml
