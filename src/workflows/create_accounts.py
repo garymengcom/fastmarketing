@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from src.constants.config import DirConfig, BasicConfig
+from src.constants.config import DirConfig, BasicConfig, LlmConfig
 from src.utils.safe_utils import generate_password
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -59,8 +59,6 @@ config = BrowserContextConfig(
     browser_window_size={"width": 1280, "height": 1100},
     locale="en-US",
     user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
-    highlight_elements=True,
-    viewport_expansion=500,
     # allowed_domains=['google.com', 'wikipedia.org'],
 )
 context = BrowserContext(browser=browser, config=config)
@@ -70,7 +68,7 @@ async def main():
     password =generate_password()
     tasks = [
         f"""
-        Go to x.com and register an account with the following information:
+        Visit https://x.com/ and register an account with the following information if not already registered:
         - username candidates: {BasicConfig.social_media_usernames}
         - email: {BasicConfig.gmail_account}
         - password: {password}
@@ -81,8 +79,8 @@ async def main():
     model = AzureChatOpenAI(
         model="gpt-4o",
         api_version="2024-10-21",
-        azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT", ""),
-        api_key=SecretStr(os.getenv("AZURE_OPENAI_KEY", "")),
+        azure_endpoint=LlmConfig.base_url,
+        api_key=SecretStr(LlmConfig.api_key),
         temperature=0.0,
     )
 

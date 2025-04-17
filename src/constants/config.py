@@ -22,7 +22,14 @@ class DirConfig:
     build_dir: Path = Path(getenv("BUILD_DIR", ROOT_DIR / "build"))
     accounts_dir: Path = Path(getenv("ACCOUNTS_DIR", ROOT_DIR / "accounts"))
 
+
+@dataclass
+class LlmConfig:
+    base_url: str = getenv("LLM_ENDPOINT")
+    api_key: str = getenv("LLM_API_KEY")
+
+
 load_dotenv()
-check_env_vars(BasicConfig)
+check_env_vars(BasicConfig, LlmConfig)
 
 DirConfig.accounts_dir.mkdir(parents=True, exist_ok=True)
