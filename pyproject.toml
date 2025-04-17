@@ -1,0 +1,18 @@
+[project]
+name = "fastmarketing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "certifi>=2025.1.31",
+    "langchain-openai==0.3.14",
+    "playwright==1.51.0",
+    "pydantic==2.10.6",
+    "python-dotenv>=1.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+]
