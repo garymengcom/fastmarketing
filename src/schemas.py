@@ -1,12 +1,6 @@
 from pydantic import BaseModel, Field
 
 
-class BasicInfo(BaseModel):
-    gmail: str
-    gmail_password: str
-    mobile: str
-
-
 class WebsiteInfo(BaseModel):
     homepage: str
     title: str = Field(default_factory=str, min_length=60, max_length=120)
