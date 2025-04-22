@@ -1,6 +1,13 @@
 # FastMarketing
 
 
+## Install playwright browser
+```bash
+brew install --cask google-chrome@canary
+
+playwright install --with-deps chrome
+```
+
 ## How it works
 
 1. Provide your basic information in `.env`, include:
