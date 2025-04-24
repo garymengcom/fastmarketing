@@ -5,6 +5,7 @@ from sqlalchemy import create_engine, DateTime
 from sqlalchemy import Column, Integer, String
 
 from src.constants.config import DbConfig
+from src.constants.enums import DirectoryWebsiteStatus
 
 engine = create_engine(DbConfig.URL, pool_pre_ping=True)
 Base = declarative_base()
@@ -42,7 +43,7 @@ class DirectoryWebsite(Base):
     domain = Column(String(50), nullable=False, unique=True)
     account = Column(String(50), nullable=False, default="")
     password = Column(String(128), nullable=False, default="")
-    status = Column(String(20), nullable=False, default="enabled")
+    status = Column(String(20), nullable=False, default=DirectoryWebsiteStatus.INITIAL.value)
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 

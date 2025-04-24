@@ -9,3 +9,4 @@ fastagent.secrets.yaml
 *.iml
 works/
 build/
+*.gif

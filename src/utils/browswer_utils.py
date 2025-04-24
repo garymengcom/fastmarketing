@@ -12,7 +12,7 @@ def get_browser_context(cookies_file_name: str = None) -> BrowserContext:
             #browser_binary_path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
             #browser_binary_path='/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary',
             #browser_binary_path='/Applications/Firefox.app/Contents/MacOS/firefox',
-            browser_class="firefox",
+            # browser_class="firefox",
             disable_security=False,
             extra_browser_args=[
                 "--start-maximized",
