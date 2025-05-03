@@ -35,12 +35,13 @@ class DirConfig:
 
 
 @dataclass
-class LlmConfig:
-    base_url: str = getenv("LLM_ENDPOINT")
-    api_key: str = getenv("LLM_API_KEY")
+class ApiKeyConfig:
+    llm_base_url: str = getenv("LLM_ENDPOINT")
+    llm_api_key: str = getenv("LLM_API_KEY")
+    serper_api_key: str = getenv("SERPER_API_KEY")
 
 
 load_dotenv()
-check_env_vars(BasicConfig, LlmConfig, DbConfig)
+check_env_vars(BasicConfig, ApiKeyConfig, DbConfig)
 
 DirConfig.basic_info_dir.mkdir(parents=True, exist_ok=True)

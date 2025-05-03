@@ -6,7 +6,7 @@ from browser_use import ActionResult, Agent, Controller
 from browser_use.browser.browser import Browser, BrowserConfig
 from browser_use.browser.context import BrowserContext, BrowserContextConfig
 
-from src.constants.config import DirConfig, BasicConfig, LlmConfig
+from src.constants.config import DirConfig, BasicConfig, ApiKeyConfig
 from src.utils.safe_utils import generate_password
 
 logger = logging.getLogger(__name__)
@@ -45,8 +45,8 @@ async def main():
     model = AzureChatOpenAI(
         model="gpt-4o",
         api_version="2024-10-21",
-        azure_endpoint=LlmConfig.base_url,
-        api_key=SecretStr(LlmConfig.api_key),
+        azure_endpoint=ApiKeyConfig.llm_base_url,
+        api_key=SecretStr(ApiKeyConfig.llm_api_key),
         temperature=0.0,
     )
 

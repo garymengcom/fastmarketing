@@ -2,7 +2,7 @@ from sqlalchemy.dialects.postgresql import insert
 
 from src.constants.enums import DirectoryWebsiteStatus
 from src.db.models import get_db, DirectoryWebsite
-from src.schemas import DirectoryWebsiteIn
+from src.schemas import WordpressWebsiteIn
 
 
 class DirectoryWebsiteCrud:
@@ -28,7 +28,7 @@ class DirectoryWebsiteCrud:
                 .all()
 
     @staticmethod
-    def update_domain(d: DirectoryWebsiteIn):
+    def update_domain(d: WordpressWebsiteIn):
         with next(get_db()) as db:
             db.query(DirectoryWebsite).filter(DirectoryWebsite.id == d.id).update(d.model_dump())
             db.commit()

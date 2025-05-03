@@ -8,3 +8,9 @@ class DirectoryWebsiteStatus(StrEnum):
     NO_SIGNUP = "no_signup"
     CREATED_FAILED = "created_failed"
 
+
+class WebsiteStatus(StrEnum):
+    INITIAL = "initial"
+    DISABLED = "disabled"
+    SUBMITTED = "submitted"
+    SUBMITTED_FAILED = "submitted_failed"
